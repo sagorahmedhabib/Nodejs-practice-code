@@ -1,0 +1,30 @@
+
+const express = require('express')
+const mongoose = require('mongoose');
+const app = express();
+
+
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+//show data
+ app.get('/help', (req, res) => {
+    res.send('<h1>I am Help Page</h1>')
+})
+
+
+//server running 
+const PORT = process.env.PORT || 8080
+mongoose
+  .connect(`mongodb+srv://dbdata:dbpass@cluster0-eukje.mongodb.net/test?retryWrites=true&w=majority`, {
+      useNewUrlParser: true
+    })
+    .then(()=>{
+        app.listen(PORT, () => {
+            console.log(`Server is Running on PORT ${PORT}`)
+        })
+    })
+    .catch((e)=>{
+        console.log(e)
+    })
+    
+    
