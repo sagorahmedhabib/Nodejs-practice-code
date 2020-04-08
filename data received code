@@ -1,0 +1,6 @@
+
+//form er data
+app.use(express.urlencoded({ extended: true }))
+
+//json data
+app.use(express.json())
